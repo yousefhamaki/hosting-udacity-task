@@ -75,5 +75,5 @@ workflows:
           requires:
             - build
       - deploy
-        -requires:
+        requires:
          - build
