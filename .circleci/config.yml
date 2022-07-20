@@ -67,6 +67,8 @@ workflows:
     jobs:
       - build
       - deploy
+        - requires: 
+          - build
       - hold:
           filters:
             branches:
