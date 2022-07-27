@@ -16,13 +16,6 @@ jobs:
           node-version: "14.15"
       - checkout
       - aws-cli/setup
-      - run:
-          name: install aws cli
-          command: |
-          sudo apt-get update
-          sudo apt install python3-pip
-          sudo pip3 install awsebcli --upgrate
-          name: Deploy App
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
@@ -52,9 +45,6 @@ jobs:
           name: API Build
           command: |
             npm run api:build
-      -run:
-          command: |
-            npm run deploy
   # deploy step will run only after manual approval
   deploy:
     docker:
@@ -66,6 +56,9 @@ jobs:
       - eb/setup
       - aws-cli/setup
       - checkout
+      -run:
+          command: |
+            npm run deploy
       
           # TODO: Install, build, deploy in both apps
           
@@ -82,3 +75,4 @@ workflows:
           type: approval
           requires:
             - build
+      -deploy
