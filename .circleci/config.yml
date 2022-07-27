@@ -12,7 +12,7 @@ jobs:
       - image: "cimg/node:14.15"
     steps:
       # install node and checkout code
-      - node/install:
+      node/install:
           node-version: "14.15"
       - checkout
       - aws-cli/setup
@@ -40,6 +40,9 @@ jobs:
           command: |
             npm run frontend:build
       # deploy step will run only after manual approval
+      docker:
+      # the base image can run most needed actions with orbs
+      - image: "cimg/node:14.15"
       steps:
         # install node and checkout code
         - node/install:
