@@ -36,6 +36,10 @@ jobs:
             npm run frontend:build
       # TODO: Build the backend API
       - run:
+        name: init
+        command: |
+          npm run eb:init && npm run eb:dev
+      - run:
           name: API Build
           command: |
             npm run api:build
@@ -50,6 +54,11 @@ jobs:
       - eb/setup
       - aws-cli/setup
       - checkout
+      # TODO: inthial && set env
+      - run:
+        name: init
+        command: |
+          npm run eb:init && npm run eb:dev
       - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
