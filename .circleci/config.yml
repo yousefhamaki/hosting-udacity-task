@@ -60,13 +60,12 @@ workflows:
   udagram:
     jobs:
       - build
-          filters:
-            branches:
-              only:
-                - master
-          type: approval
-          requires:
-            - build
+        filters:
+          branches:
+            only:
+              - master
+        requires:
+          - build
       - deploy:
           requires:
             - build
