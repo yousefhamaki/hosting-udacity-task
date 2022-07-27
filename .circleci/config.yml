@@ -58,7 +58,8 @@ jobs:
       - run:
           name: init
           command: |
-            npm run eb:init && npm run eb:dev
+            npm run eb:init
+            npm run eb:dev
       - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
