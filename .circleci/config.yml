@@ -56,7 +56,7 @@ jobs:
       - eb/setup
       - aws-cli/setup
       - checkout
-      -run:
+      - run:
           command: |
             npm run deploy
       
