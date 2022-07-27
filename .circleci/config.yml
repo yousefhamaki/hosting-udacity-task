@@ -50,6 +50,11 @@ jobs:
       - eb/setup
       - aws-cli/setup
       - checkout
+      # TODO: inthial && set env
+      - run:
+          name: init
+          command: |
+            npm run eb:env
       - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
