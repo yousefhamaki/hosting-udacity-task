@@ -60,12 +60,11 @@ workflows:
   udagram:
     jobs:
       - build
+      - hold:
         filters:
           branches:
             only:
               - master
-        requires:
-          - build
       - deploy:
           requires:
             - build
