@@ -41,22 +41,20 @@ jobs:
             npm run frontend:build
       # deploy step will run only after manual approval
       steps:
-      # install node and checkout code
-      - node/install:
-          node-version: "14.15"
-      - checkout
-      - aws-cli/setup
-      - eb/setup
-      # TODO: inthial && set env
-      - run:
-        name: init 
-        command: | 
-          npm run eb:init && npm run eb:dev
-      - run:
-          command: |
-            npm run deploy
-
-          # TODO: Install, build, deploy in both apps
+        # install node and checkout code
+        - node/install:
+            node-version: "14.15"
+        - checkout
+        - aws-cli/setup
+        - eb/setup
+        # TODO: inthial && set env
+        - run:
+          name: init 
+          command: | 
+            npm run eb:init && npm run eb:dev
+        - run:
+            command: |
+              npm run deploy
 
 workflows:
   udagram:
